@@ -1,0 +1,33 @@
+{
+  "name": "nodejs-api-portfolio",
+  "version": "1.0.0",
+  "description": "API for the portfolio Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vishnumd91/NodeJS-API-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3"
+  },
+  "bugs": {
+    "url": "https://github.com/vishnumd91/NodeJS-API-Portfolio/issues"
+  },
+  "homepage": "https://github.com/vishnumd91/NodeJS-API-Portfolio#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/node": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "nodemon": "^2.0.16"
+  }
+}
