@@ -15,17 +15,24 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const experienceRoutes = require("./routes/experienceRoutes");
+const profileRoutes = require("./routes/profileRoutes");
 
 app.use(cors());
 
 app.use(express.json());
 
-// express.static(path.join(__dirname, '../public'))
-
 app.use("/portfolio", experienceRoutes);
+
+app.use("/profile", profileRoutes);
 
 app.use("/", (req, res) => {
   res.send("Hello, Welcome to Portfolio API");
+});
+
+app.use(express.static(path.join(__dirname, "/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/build/", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`Server running on PORT ${PORT}`));
