@@ -1,15 +1,5 @@
 const ExperienceData = require("../models/experience");
 
-const getExperienceData = async (req, res) => {
-  try {
-    const experienceData = await ExperienceData.find();
-
-    res.status(200).json(experienceData);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
 const addExperienceData = async (req, res) => {
   const item = req.body;
 
@@ -24,7 +14,56 @@ const addExperienceData = async (req, res) => {
   }
 };
 
+const getExperienceDataById = async (req, res) => {
+  try {
+    const experienceData = await ExperienceData.findById(req.params.id);
+
+    res.status(200).json(experienceData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const getExperienceData = async (req, res) => {
+  try {
+    const experienceData = await ExperienceData.find();
+
+    res.status(200).json(experienceData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const updateExperienceData = async (req, res) => {
+  try {
+    const experienceData = await ExperienceData.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body }, // $set is a mongoose operator
+      { new: true } // This will return the updated document
+    );
+
+    res.status(200).json(experienceData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+const deleteExperienceData = async (req, res) => {
+  try {
+    const experienceData = await ExperienceData.findByIdAndDelete(
+      req.params.id
+    );
+
+    res.status(200).json("Data has been deleted");
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 module.exports = {
-  getExperienceData,
   addExperienceData,
+  getExperienceDataById,
+  getExperienceData,
+  updateExperienceData,
+  deleteExperienceData,
 };
